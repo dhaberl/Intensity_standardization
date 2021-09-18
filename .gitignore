@@ -1,6 +1,9 @@
 # Custom
 data/
 
+# PyCharm
+.idea
+
 # MacOS
 .DS_Store
 
