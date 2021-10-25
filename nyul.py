@@ -11,7 +11,6 @@ Python implementation based on:
 https://github.com/sergivalverde/MRI_intensity_normalization
 https://github.com/jcreinhold/intensity-normalization
 Date: 2021-09-01 
-Author: DAVID HABERL
 """
 
 import numpy as np
@@ -23,11 +22,11 @@ def get_landmarks(img, percs):
     """Get the landmarks for a given image
 
     Args:
-        img (numpy array): Input image to process. Shape: (height, width)
-        percs (numpy array): Percentiles where to calculate the landmarks 
+        img (numpy.ndarray): Input image to process. Shape: (height, width)
+        percs (numpy.ndarray): Percentiles where to calculate the landmarks 
 
     Returns:
-        landmarks (numpy array): Intensity values corresponding to the percentiles
+        landmarks (numpy.ndarray): Intensity values corresponding to the percentiles
     """
 
     landmarks = np.percentile(img, percs)
@@ -39,7 +38,7 @@ def learn_standard_scale(data, i_min=1, i_max=99, i_s_min=1, i_s_max=100, l_perc
     "learning".
 
     Args:
-        data (list): Set of input images, i.e. [img-1, img-2, ..., img-N] with img-1 as numpy array (height, width).
+        data (list): Set of input images, i.e. [img-1, img-2, ..., img-N] with img-1 as numpy.ndarray (height, width).
         i_min (int, optional): Minimum percentile value of the overall intensity range that defines the lower boundary
         of the intensity of interest range (see Ref [2]). Defaults to 1.
         i_max (int, optional): Maximum percentile value of the overall intensity range that defines the upper boundary
@@ -69,9 +68,9 @@ def learn_standard_scale(data, i_min=1, i_max=99, i_s_min=1, i_s_max=100, l_perc
             [1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 99]
 
     Returns:
-        standard_scale (numpy array): Standard scale landmarks, i.e. the average landmark intensities (averaged over
+        standard_scale (numpy.ndarray): Standard scale landmarks, i.e. the average landmark intensities (averaged over
         N images <=> len(data)).
-        percs (numpy array): Intensity-landmark configuration that was used.
+        percs (numpy.ndarray): Intensity-landmark configuration that was used.
     """
 
     # Initialize intensity-landmark configuration
@@ -101,13 +100,13 @@ def apply_standard_scale(input_image, standard_scale, percs, interp_type='linear
     the standard scale.
 
     Args:
-        input_image (numpy array): Input image to normalize. Shape: (height, width)
-        standard_scale (numpy array): Standard scale landmarks.
-        percs (numpy array): Intensity-landmark configuration that was used to obtain the standard_scale.
+        input_image (numpy.ndarray): Input image to normalize. Shape: (height, width)
+        standard_scale (numpy.ndarray): Standard scale landmarks.
+        percs (numpy.ndarray): Intensity-landmark configuration that was used to obtain the standard_scale.
         interp_type (str, optional): Interpolation type. Defaults to 'linear'.
 
     Returns:
-        normalized_image (numpy array): Normalized input image
+        normalized_image (numpy.ndarray): Normalized input image
     """
     
     img_thresh = input_image > input_image.mean()
