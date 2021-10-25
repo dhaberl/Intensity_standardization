@@ -4,6 +4,10 @@ Scaling intensities of images to a common standard scale. The intensity standard
 bone scintigraphy scans, which are basically grayscale images.
 
 ## How to use
+Import `nyul.py`:
+```Python
+import nyul
+```
 Load your data and store it in a list:
 ```python
 data = [img_1, img_2, ..., img_N]
@@ -21,11 +25,11 @@ img_norm = apply_standard_scale(input_image, standard_scale, percs, interp_type=
 ```
 where `input_image` is the image to be normalized as `(numpy.ndarray)` with `shape: (height, width)`.
 
-Check the jupyter notebook for a detailed explanation on the fundamental problem and the usage: 
+Refer to the jupyter notebook for a detailed explanation of the fundamental problem and the usage: 
 ```python
 demo.ipynb
 ```
-Check the docstrings for a detailed explanation of the functions and its parameters.
+Refer to the docstrings for a detailed explanation of the functions and its parameters.
 
 ## Acknowledgements
 Implementation based on:
