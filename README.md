@@ -1,29 +1,28 @@
 # Intensity standardization
 Scaling intensities of images to a common standard scale. The intensity standardization method by Nyul et al. should 
 *theoretically* work with all types of images (not only medical images). This implementation was built for 
-bone scintigraphy scans, which are basically grayscale images (height, width).
+bone scintigraphy scans, which are basically grayscale images.
 
 ## How to use
 Load your data and store it in a list:
+```python
+data = [img_1, img_2, ..., img_N]
 ```
-data = [img-1, img-2, ..., img-N]
+where `data` is a list of your images as `numpy.ndarrays` (height, width).
 
-data (list): Set of input images, i.e. [img-1, img-2, ..., img-N] with img-1 as numpy array (height, width).
-```
 Compute the standard scale for a given intensity-landmark configuration:
-```
-standard_scale, percs = learn_standard_scale(data, i_min=1, i_max=99, i_s_min=1, i_s_max=100, l_percentile=10, 
-                                             u_percentile=90, step=10)
+```python
+standard_scale, percs = learn_standard_scale(data, i_min=1, i_max=99, i_s_min=1, i_s_max=100, l_percentile=10, u_percentile=90, step=10)
 ```
 Apply the standard scale to a target image, i.e. normalize the image intensities of the target image to the standard 
 scale:
-```
+```python
 img_norm = apply_standard_scale(input_image, standard_scale, percs, interp_type='linear')
 
-input_image (numpy array): Input image to normalize. Shape: (height, width)
+input_image (numpy.ndarray): Input image to normalize. Shape: (height, width)
 ```
 Check the jupyter notebook for a detailed explanation on the fundamental problem and the usage: 
-```
+```python
 demo.ipynb
 ```
 Check the docstrings for a detailed explanation of the functions and its parameters.
