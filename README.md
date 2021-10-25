@@ -8,7 +8,7 @@ Load your data and store it in a list:
 ```python
 data = [img_1, img_2, ..., img_N]
 ```
-where `data` is a list of your images as `numpy.ndarrays` (height, width).
+where `data` is a list of your images as `numpy.ndarrays` with `shape: (height, width)`.
 
 Compute the standard scale for a given intensity-landmark configuration:
 ```python
@@ -18,9 +18,9 @@ Apply the standard scale to a target image, i.e. normalize the image intensities
 scale:
 ```python
 img_norm = apply_standard_scale(input_image, standard_scale, percs, interp_type='linear')
-
-input_image (numpy.ndarray): Input image to normalize. Shape: (height, width)
 ```
+where `input_image` is the image to be normalized as `(numpy.ndarray)` with `shape: (height, width)`.
+
 Check the jupyter notebook for a detailed explanation on the fundamental problem and the usage: 
 ```python
 demo.ipynb
